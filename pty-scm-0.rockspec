@@ -19,6 +19,7 @@ build = {
 	modules = {
 		["pty"] = {
 			defines = { "_POSIX_C_SOURCE=200809L" };
+			incdirs = { "vendor/compat-5.3/c-api/" };
 			sources = {
 				"pty/init.c";
 			};

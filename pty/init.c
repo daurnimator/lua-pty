@@ -8,6 +8,7 @@
 
 #include <lua.h>
 #include <lauxlib.h>
+#include "compat-5.3.h"
 
 
 static int pty_open(lua_State *L) {
