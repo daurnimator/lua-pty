@@ -12,7 +12,7 @@
 
 static int pty_open(lua_State *L) {
 	int flags = O_RDWR|O_NOCTTY; /* hard-coded for now */
-#if linux
+#if __linux
 	int fd = open("/dev/ptmx", flags|O_CLOEXEC);
 #else
 	int fd = posix_openpt(flags);
@@ -23,7 +23,7 @@ static int pty_open(lua_State *L) {
 		lua_pushinteger(L, errno);
 		return 3;
 	}
-#if !linux && defined FD_CLOEXEC
+#if !__linux && defined FD_CLOEXEC
 	(void)fcntl(fd, F_SETFD, FD_CLOEXEC);
 #endif
 	lua_pushinteger(L, fd);
